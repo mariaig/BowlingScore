@@ -9,7 +9,7 @@ public class Frame {
     public int secondScore=0;
     public int thirdScore=0; //used only for frame10
     
-    public int partialFrameScore=0;
+    //public int partialFrameScore=0;
     
     Frame(String first){
        if(first.equals("-")){

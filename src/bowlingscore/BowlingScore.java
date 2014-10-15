@@ -33,7 +33,7 @@ public class BowlingScore {
             if(nrOfStrikes==3){
                 //3 strikes one after another
                 nrOfStrikes=0;
-                frames.get(i-3).partialFrameScore=totalScore+30;
+                //frames.get(i-3).partialFrameScore=totalScore+30;
                 totalScore+=30;
                 i=i-2;
                 continue;
@@ -41,19 +41,18 @@ public class BowlingScore {
             if(flag){
                 //strikes near frame 10
                 if(nrOfStrikes==2){
-                    frames.get(8).partialFrameScore=totalScore+20+frames.get(9).secondScore;
+                    //frames.get(8).partialFrameScore=totalScore+20+frames.get(9).secondScore;
                     totalScore+=20+frames.get(9).secondScore;
-                    frames.get(9).partialFrameScore=totalScore+10+frames.get(9).secondScore+frames.get(9).thirdScore;
+                    //frames.get(9).partialFrameScore=totalScore+10+frames.get(9).secondScore+frames.get(9).thirdScore;
                     totalScore+=10+frames.get(i).secondScore+frames.get(i).thirdScore;
                     break;
                 }
             }
             if(frames.get(i).isStrike()){
                 if(i==9){
-                    System.out.println("Here");
                     //strike at the last frame
                     if(nrOfStrikes==0){
-                        frames.get(i).partialFrameScore=totalScore+10+frames.get(i).secondScore+frames.get(i).thirdScore;
+                        //frames.get(i).partialFrameScore=totalScore+10+frames.get(i).secondScore+frames.get(i).thirdScore;
                         totalScore+=10+frames.get(i).secondScore+frames.get(i).thirdScore;
                         break;
                     }else{
@@ -73,14 +72,14 @@ public class BowlingScore {
                 if(nrOfStrikes>0){
                     if(nrOfStrikes==1){
                         // Strike +  Normal roll (not a strike or a spare) 
-                        frames.get(i-1).partialFrameScore=totalScore+10+frames.get(i).firstScore+frames.get(i).secondScore;
+                        //frames.get(i-1).partialFrameScore=totalScore+10+frames.get(i).firstScore+frames.get(i).secondScore;
                         totalScore+=10+frames.get(i).firstScore+frames.get(i).secondScore;
                         nrOfStrikes=0;
                         continue;
                     }
                     else if(nrOfStrikes==2){
                         // Strike+Strike+Normal roll
-                        frames.get(i-2).partialFrameScore=totalScore+20+frames.get(i).firstScore;
+                        //frames.get(i-2).partialFrameScore=totalScore+20+frames.get(i).firstScore;
                         totalScore+=20+frames.get(i).firstScore;
                         nrOfStrikes=0;
                         i=i-1;
@@ -92,13 +91,13 @@ public class BowlingScore {
                 if(frames.get(i).isSpare()){
                     if(i==9){
                         //Spare at the last frame = 10+extraball(third)
-                        frames.get(i).partialFrameScore=totalScore+10+frames.get(i).thirdScore;
+                        //frames.get(i).partialFrameScore=totalScore+10+frames.get(i).thirdScore;
                         totalScore+=10+frames.get(i).thirdScore;
                         break;
                     }
                     if(i+1<10){
                         //Spare = 10+next ball
-                        frames.get(i).partialFrameScore=totalScore+10+frames.get(i+1).firstScore;
+                        //frames.get(i).partialFrameScore=totalScore+10+frames.get(i+1).firstScore;
                         totalScore+=10+frames.get(i+1).firstScore;
                         i++;
                         continue;
@@ -107,7 +106,7 @@ public class BowlingScore {
                 }
                 
                 //without spare or strike is ball1+ball2;
-                frames.get(i).partialFrameScore=totalScore+frames.get(i).firstScore+frames.get(i).secondScore;
+                //frames.get(i).partialFrameScore=totalScore+frames.get(i).firstScore+frames.get(i).secondScore;
                 totalScore+=frames.get(i).firstScore+frames.get(i).secondScore;
                 i++;
             }
