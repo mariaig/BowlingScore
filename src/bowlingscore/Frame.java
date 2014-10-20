@@ -10,6 +10,10 @@ public class Frame {
     public int thirdScore=0; //used only for frame10
     
     //public int partialFrameScore=0;
+    Frame(int firstScore,int secondScore){
+        this.firstScore=firstScore;
+        this.secondScore=secondScore;
+    }
     
     Frame(String first){
        if(first.equals("-")){
@@ -55,6 +59,11 @@ public class Frame {
         return this.firstScore+this.secondScore==10;
     }
    
+    public void setThirdScore(int thirdScore){
+        this.thirdScore=thirdScore;
+    }
+    
+    
     @Override
     public String toString(){
         return "("+firstScore+" "+secondScore+" "+thirdScore+")";
