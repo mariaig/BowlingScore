@@ -6,6 +6,6 @@ package bowlingscore;
  */
 public interface BowlingScoreCalculator {
 
-  int computeScoreFor(int[] rolls) throws InvalidNumberOfRolls;
+  int computeScoreFor(int[] rolls);
 
 }

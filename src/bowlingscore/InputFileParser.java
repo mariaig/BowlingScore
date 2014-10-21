@@ -1,7 +1,6 @@
-
 package bowlingscore;
 
-
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -13,29 +12,41 @@ import java.util.Scanner;
  * @author Maria
  */
 public class InputFileParser {
-   
-    public int[] parseFile(String pathToFile,int rollsLength) throws IOException, InvalidNumberOfRolls, InvalidRepresentationOfRolls{
-        int[] rolls=new int[rollsLength];
-        int nrOfRolls=0;
-        int i=0;
-        
-        Scanner scan=new Scanner(new FileReader(pathToFile));
-        
-        while(scan.hasNext()){
-           
-            try{
-                rolls[i++]=scan.nextInt();
-            }catch(NoSuchElementException | IllegalStateException  ex){
+
+    public int[] parseTests(String pathToFile, int rollsLength) throws IOException, InvalidNumberOfRolls, InvalidRepresentationOfRolls {
+        int[] rolls = new int[rollsLength];
+        int nrOfRolls = 0;
+        int i = 0;
+
+        Scanner scan = new Scanner(new FileReader(pathToFile));
+
+        while (scan.hasNext()) {
+
+            try {
+                rolls[i++] = scan.nextInt();
+                //System.out.println(rolls[i-1]);
+            } catch (NoSuchElementException | IllegalStateException ex) {
                 throw new InvalidRepresentationOfRolls();
             }
             nrOfRolls++;
-            System.out.println(rolls[i-1]);
+            //System.out.println(rolls[i-1]);
         }
-        
-        if(nrOfRolls<20||nrOfRolls>21){
+
+        if (nrOfRolls < 20 || nrOfRolls > 21) {
             throw new InvalidNumberOfRolls();
         }
         return rolls;
+    }
+
+    public int getResult(String pathToResultsFiles) throws FileNotFoundException, CannotFindInt {
+        Scanner scan = new Scanner(new FileReader(pathToResultsFiles));
+        int result = 0;
+        try {
+            result = scan.nextInt();
+        } catch (NoSuchElementException | IllegalStateException ex) {
+            throw new CannotFindInt();
+        }
+        return result;
     }
 //    
 //   public ArrayList<Frame> parseFile(String pathToFile){
@@ -69,4 +80,3 @@ public class InputFileParser {
 //        return new Frame(parts[0],parts[1],parts[2]);
 //    }
 }
-

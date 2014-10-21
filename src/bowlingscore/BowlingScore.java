@@ -10,7 +10,7 @@ public class BowlingScore implements BowlingScoreCalculator {
     private final int lastFrameRoll1=18;
     
     @Override
-    public int computeScoreFor(int[] rolls) throws InvalidNumberOfRolls {
+    public int computeScoreFor(int[] rolls){
     
         ArrayList<Frame> frames = new ArrayList<Frame>();
         for (int i = 0; i <= lastFrameRoll1; i = i + 2) {
@@ -116,8 +116,7 @@ public class BowlingScore implements BowlingScoreCalculator {
                         //frames.get(i).partialFrameScore=totalScore+10+frames.get(i).thirdScore;
                         totalScore += 10 + frames.get(i).thirdScore;
                         break;
-                    }
-                    if (i + 1 < 10) {
+                    } else {
                         //Spare = 10+next ball
                         //frames.get(i).partialFrameScore=totalScore+10+frames.get(i+1).firstScore;
                         totalScore += 10 + frames.get(i + 1).firstScore;
