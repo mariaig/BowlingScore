@@ -7,19 +7,37 @@ import java.util.ArrayList;
  * @author Maria
  */
 public class BowlingScore implements BowlingScoreCalculator {
-    private final int lastFrameRoll1=18;
-    
-    @Override
-    public int computeScoreFor(int[] rolls){
-    
-        ArrayList<Frame> frames = new ArrayList<Frame>();
-        for (int i = 0; i <= lastFrameRoll1; i = i + 2) {
-            frames.add(new Frame(rolls[i], rolls[i + 1]));
-        }
 
-        if (rolls[18] == 10 || (rolls[18] + rolls[19]) == 10) {
-            //extra ball at frame 10
-            frames.get(9).thirdScore = rolls[20];
+    private final int lastFrameRoll1 = 18;
+
+    @Override
+    public int computeScoreFor(int[] rolls) {
+
+        ArrayList<Frame> frames;
+        frames = new ArrayList<>();
+        //int i=0;
+        int j = 0;
+        for (int i = 0; i <= lastFrameRoll1; i = i + 2) {
+            if (rolls[j] == 10) {
+                //System.out.println("-- " + j + " -- |"+ i + "| -- " + rolls[j]);
+                frames.add(new Frame(rolls[j], 0));
+                j++;
+            } else {
+                //System.out.println("-- " + j + " -- " + rolls[j] + "  " + rolls[j+1]);
+                frames.add(new Frame(rolls[j], rolls[j + 1]));
+                j += 2;
+            }
+        }
+       // System.out.println("-> " + j + " -- " + rolls[j]);
+       
+        //extra ball at frame 10
+        if (rolls[j-1] == 10) {
+           // System.out.println("-- " + j + " -- " + rolls[j] + "  " + rolls[j+1]);
+            frames.get(9).secondScore = rolls[j];
+            frames.get(9).thirdScore = rolls[j + 1];
+        } else if ( (rolls[j-2] + rolls[j-1]) == 10) {
+            //System.out.println("-- " + j + " -- " + rolls[j]);
+            frames.get(9).thirdScore = rolls[j];
         }
         return getTotalScore(frames);
     }

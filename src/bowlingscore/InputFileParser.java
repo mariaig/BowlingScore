@@ -29,8 +29,10 @@ public class InputFileParser {
             nrOfRolls++;
             //System.out.println(rolls[i-1]);
         }
-
-        if (nrOfRolls < 20 || nrOfRolls > 21) {
+        
+        //12= all rolls->spark
+        //21= spark||spare at the last frame
+        if (nrOfRolls < 12 || nrOfRolls > 21) {
             throw new InvalidNumberOfRolls();
         }
         return rolls;

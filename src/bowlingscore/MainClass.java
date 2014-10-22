@@ -28,7 +28,7 @@ public class MainClass {
         BowlingScore bs = new BowlingScore();
         int score;
         int correctResult;
-        
+        int passed=0;
         for (int i = 1; i <= nrOfTests; i++) {
             try {
                 rolls = ifp.parseTests(tests + i + testsExtension, maxRollsLength);
@@ -37,6 +37,7 @@ public class MainClass {
                 System.out.print("Test" + i);
                 if (correctResult == score) {
                     System.out.print(" passed");
+                    passed++;
                 } else {
                     System.out.print(" failed");
                 }
@@ -56,7 +57,7 @@ public class MainClass {
                System.err.println("Test" + i + " failed!");
             }
         }
-
+        System.out.println("Passed: "+passed+"/"+nrOfTests);
 //        for(int i=1;i<14;i++){
 //            allFrames=ifp.parseFile("rolls"+i+".txt");
 //            score=bs.getTotalScore(allFrames);
