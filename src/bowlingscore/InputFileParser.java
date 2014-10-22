@@ -3,7 +3,6 @@ package bowlingscore;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -24,7 +23,6 @@ public class InputFileParser {
 
             try {
                 rolls[i++] = scan.nextInt();
-                //System.out.println(rolls[i-1]);
             } catch (NoSuchElementException | IllegalStateException ex) {
                 throw new InvalidRepresentationOfRolls();
             }

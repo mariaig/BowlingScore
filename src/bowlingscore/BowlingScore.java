@@ -21,8 +21,6 @@ public class BowlingScore implements BowlingScoreCalculator {
             //extra ball at frame 10
             frames.get(9).thirdScore = rolls[20];
         }
-         
-
         return getTotalScore(frames);
     }
 
